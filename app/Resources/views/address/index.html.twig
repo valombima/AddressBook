@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<h2 class="page-header">Address Book </h2>
+       <table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">First Name</th>
+      <th scope="col">Last Name</th>
+      <th scope="col">Street</th>
+      <th scope="col">Zip</th>
+      <th scope="col">City</th>
+      <th scope="col">Country</th>
+      <th scope="col">Phone</th>
+      <th scope="col">Birthday</th>
+      <th scope="col">Email</th>
+      <!--th scope="col">Picture</th-->
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for address in addresses %}
+    <tr>
+      <th scope="row">{{address.id}}</th>
+      <td>{{address.firstName}}</td>
+      <td>{{address.lastName}}</td>
+      <td>{{address.streetNo}}</td>
+      <td>{{address.zip}}</td>
+      <td>{{address.city}}</td>
+      <td>{{address.country}}</td>
+      <td>{{address.phoneNumber}}</td>
+      <td>{{address.birthday|date('F j, Y')}}</td>
+      <td>{{address.emailAddress}}</td>
+      <!--td><img = "{{ asset('uploads/images/'-address.picture) }}" width="100" height="100"</td-->
+      <td width=150>
+      <a href="/address/edit/{{address.id}}" class="btn btn-successs btn-sm">Edit</a>
+    <a href="/address/delete/{{address.id}}" class="btn btn-danger btn-sm">Delete</a>
+   
+    </td>
+    </tr>
+    {% endfor %}
+    
+  </tbody>
+</table>
+{% endblock %}
